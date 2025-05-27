@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navaneet - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0969da;
+            --secondary-color: #656d76;
+            --background-color: #ffffff;
+            --sidebar-bg: #f6f8fa;
+            --border-color: #d1d9e0;
+            --text-primary: #24292f;
+            --text-secondary: #656d76;
+            --hover-color: #f3f4f6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 24px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            color: var(--text-primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 20px;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 12px 8px 32px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: var(--background-color);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-item a {
+            display: block;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item a:hover, .nav-item.active a {
+            background-color: var(--hover-color);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active a {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-item .dropdown-icon {
+            float: right;
+            transition: transform 0.2s ease;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px 48px;
+            background-color: var(--background-color);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border: 1px solid var(--border-color);
+            background: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .profile-degree {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .bio-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .bio-content p {
+            margin-bottom: 24px;
+        }
+
+        .next-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .next-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+
+        .next-btn:hover {
+            opacity: 0.8;
+        }
+
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 24px;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                font-size: 36px;
+            }
+
+            .profile-name {
+                font-size: 24px;
+            }
+        }
+
+        /* Smooth animations */
+        * {
+            transition: all 0.2s ease;
+        }
+
+        .nav-item a:hover {
+            transform: translateX(4px);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">Navaneet</div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+                <span style="font-size: 12px; color: var(--text-secondary); margin-left: 8px;">Ctrl K</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="#bio">Bio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#resume">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects">
+                        Projects
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience">
+                        <i class="fas fa-user" style="margin-right: 8px; color: #ff6b6b;"></i>
+                        Experience
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#publications">Publications</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog">
+                        Blog
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact">Contact Me</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1 class="page-title">Bio</h1>
+                <div class="header-actions">
+                    <button class="btn"><i class="fas fa-download"></i></button>
+                    <button class="btn"><i class="fas fa-expand"></i></button>
+                    <button class="btn"><i class="fas fa-moon"></i></button>
+                </div>
+            </header>
+
+            <section class="profile-section">
+                <div class="profile-image">SN</div>
+                <h2 class="profile-name">Sai Navaneet</h2>
+                <p class="profile-degree">Masters in Electronics</p>
+            </section>
+
+            <div class="bio-content">
+                <p>From the moment I discovered the excitement of engineering, I've been drawn to the transformative potential of automation and robotics. My journey began in 2022 as an Electrical Engineering student in Korea, where I delved into the intricate realms of electronic and control systems. Building on this foundation, I am currently pursuing a Master's degree in Electronics, centering my research on advanced robotics systems.</p>
+
+                <p>Over the years, I've honed my skills in software development tailored specifically for robotics, finding tremendous satisfaction in turning complex ideas into practical, automated solutions. Whether I'm designing sophisticated mechatronic frameworks or crafting next-generation software, I'm driven by a passion to expand the horizons of what robotics can achieve. Through each endeavor, I strive to blend innovation and precision, forging new paths in the fast-evolving world of automation.</p>
+            </div>
+
+            <div class="next-section">
+                <a href="#resume" class="next-btn">
+                    Next
+                    <br>
+                    Resume
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+
+            <footer class="footer">
+                By Navaneet
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Search functionality
+        document.querySelector('.search-box input').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'k') {
+                e.preventDefault();
+                this.focus();
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-item a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Remove active class from all items
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.parentElement.classList.add('active');
+            });
+        });
+
+        // Dark mode toggle
+        document.querySelector('.fa-moon').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Mobile menu toggle (for responsive design)
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('open');
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'k') {
+                e.preventDefault();
+                document.querySelector('.search-box input').focus();
+            }
+        });
+    </script>
+</body>
+</html>
