@@ -173,6 +173,15 @@
             background-color: var(--hover-color);
         }
 
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
         .profile-section {
             text-align: center;
             margin-bottom: 48px;
@@ -233,6 +242,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: opacity 0.2s ease;
+            cursor: pointer;
         }
 
         .next-btn:hover {
@@ -245,6 +255,71 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-size: 14px;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .resume-item {
+            margin-bottom: 32px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .resume-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .resume-item .date {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .project-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tech-tag {
+            background-color: var(--sidebar-bg);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
         }
 
         /* Responsive */
@@ -308,13 +383,13 @@
 
             <ul class="nav-menu">
                 <li class="nav-item active">
-                    <a href="#bio">Bio</a>
+                    <a href="#" data-section="bio">Bio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#resume">Resume</a>
+                    <a href="#" data-section="resume">Resume</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#projects">
+                    <a href="#" data-section="projects">
                         Projects
                         <i class="fas fa-chevron-down dropdown-icon"></i>
                     </a>
@@ -325,7 +400,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="header">
-                <h1 class="page-title">Bio</h1>
+                <h1 class="page-title" id="currentPageTitle">Bio</h1>
                 <div class="header-actions">
                     <button class="btn"><i class="fas fa-download"></i></button>
                     <button class="btn"><i class="fas fa-expand"></i></button>
@@ -333,28 +408,111 @@
                 </div>
             </header>
 
-            <section class="profile-section">
-                <div class="profile-image">
-                    <img src="profile-image.jpg" alt="Son Chang Woo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                </div>                
-                <h2 class="profile-name">Son Chang Woo</h2>
-                <p class="profile-degree">Masters in Electronics</p>
+            <!-- Bio Section -->
+            <section id="bio" class="content-section active">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <img src="profile-image.jpg" alt="Son Chang Woo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>                
+                    <h2 class="profile-name">Son Chang Woo</h2>
+                    <p class="profile-degree">Undergraduate in Electronics Engineering</p>
+                </div>
+
+                <div class="bio-content">
+                    <p>From the moment I discovered the excitement of engineering, I've been drawn to the transformative potential of automation and robotics. My journey began in 2022 as an Electrical Engineering student in Korea, where I delved into the intricate realms of electronic and control systems. Building on this foundation, I am currently pursuing a Master's degree in Electronics, centering my research on advanced robotics systems.</p>
+
+                    <p>Over the years, I've honed my skills in software development tailored specifically for robotics, finding tremendous satisfaction in turning complex ideas into practical, automated solutions. Whether I'm designing sophisticated mechatronic frameworks or crafting next-generation software, I'm driven by a passion to expand the horizons of what robotics can achieve. Through each endeavor, I strive to blend innovation and precision, forging new paths in the fast-evolving world of automation.</p>
+                </div>
+
+                <div class="next-section">
+                    <a href="#" class="next-btn" data-section="resume">
+                        Next
+                        <br>
+                        Resume
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
             </section>
 
-            <div class="bio-content">
-                <p>From the moment I discovered the excitement of engineering, I've been drawn to the transformative potential of automation and robotics. My journey began in 2022 as an Electrical Engineering student in Korea, where I delved into the intricate realms of electronic and control systems. Building on this foundation, I am currently pursuing a Master's degree in Electronics, centering my research on advanced robotics systems.</p>
+            <!-- Resume Section -->
+            <section id="resume" class="content-section">
+                <div class="resume-section">
+                    <div class="resume-item">
+                        <h3>Education</h3>
+                        <div class="date">2022 - Present</div>
+                        <p><strong>Master's Degree in Electronics Engineering</strong></p>
+                        <p>Specializing in advanced robotics systems and automation</p>
+                    </div>
 
-                <p>Over the years, I've honed my skills in software development tailored specifically for robotics, finding tremendous satisfaction in turning complex ideas into practical, automated solutions. Whether I'm designing sophisticated mechatronic frameworks or crafting next-generation software, I'm driven by a passion to expand the horizons of what robotics can achieve. Through each endeavor, I strive to blend innovation and precision, forging new paths in the fast-evolving world of automation.</p>
-            </div>
+                    <div class="resume-item">
+                        <h3>Technical Skills</h3>
+                        <div class="date">Proficiencies</div>
+                        <p><strong>Programming:</strong> Python, C++, MATLAB, ROS</p>
+                        <p><strong>Hardware:</strong> Arduino, Raspberry Pi, PLC Systems</p>
+                        <p><strong>Software:</strong> SolidWorks, AutoCAD, LabVIEW</p>
+                    </div>
 
-            <div class="next-section">
-                <a href="#resume" class="next-btn">
-                    Next
-                    <br>
-                    Resume
-                    <i class="fas fa-chevron-right"></i>
-                </a>
-            </div>
+                    <div class="resume-item">
+                        <h3>Research Experience</h3>
+                        <div class="date">2023 - Present</div>
+                        <p><strong>Robotics Systems Research</strong></p>
+                        <p>Focus on mechatronic frameworks and automated control systems</p>
+                    </div>
+                </div>
+
+                <div class="next-section">
+                    <a href="#" class="next-btn" data-section="projects">
+                        Next
+                        <br>
+                        Projects
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="content-section">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Automated Control System</h3>
+                        <p>Developed an advanced automated control system for industrial robotics applications using Python and ROS framework.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">Control Systems</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Mechatronic Framework</h3>
+                        <p>Designed and implemented a comprehensive mechatronic framework for precision automation in manufacturing processes.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">SolidWorks</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Robotics Simulation</h3>
+                        <p>Created a simulation environment for testing robotic algorithms and control strategies using MATLAB and Simulink.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">MATLAB</span>
+                            <span class="tech-tag">Simulink</span>
+                            <span class="tech-tag">Robotics Toolbox</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="next-section">
+                    <a href="#" class="next-btn" data-section="bio">
+                        Back to
+                        <br>
+                        Bio
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </div>
+            </section>
 
             <footer class="footer">
                 By SonChangWoo
@@ -363,25 +521,47 @@
     </div>
 
     <script>
+        // Navigation functionality
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Update page title
+            const titles = {
+                'bio': 'Bio',
+                'resume': 'Resume',
+                'projects': 'Projects'
+            };
+            document.getElementById('currentPageTitle').textContent = titles[sectionName];
+            
+            // Update active navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-section="${sectionName}"]`).parentElement.classList.add('active');
+        }
+
+        // Add click event listeners to navigation links
+        document.querySelectorAll('[data-section]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = this.getAttribute('data-section');
+                showSection(section);
+            });
+        });
+
         // Search functionality
         document.querySelector('.search-box input').addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'k') {
                 e.preventDefault();
                 this.focus();
             }
-        });
-
-        // Smooth scrolling for navigation
-        document.querySelectorAll('.nav-item a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Remove active class from all items
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Add active class to clicked item
-                this.parentElement.classList.add('active');
-            });
         });
 
         // Dark mode toggle
