@@ -1,2 +1,0 @@
-# SonChangWoo.github.io
-portfolio
