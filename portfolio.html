@@ -72,10 +72,12 @@
         .search-box {
             position: relative;
             margin-bottom: 32px;
+            display: flex;
+            align-items: center;
         }
 
         .search-box input {
-            width: 100%;
+            flex: 1;
             padding: 8px 12px 8px 32px;
             border: 1px solid var(--border-color);
             border-radius: 6px;
@@ -89,6 +91,14 @@
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-secondary);
+            z-index: 1;
+        }
+
+        .ctrl-k {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-left: 8px;
+            white-space: nowrap;
         }
 
         .nav-menu {
@@ -283,17 +293,17 @@
     <div class="container">
         <!-- Sidebar -->
         <nav class="sidebar">
-            <div class="logo">Navaneet</div>
+            <div class="logo">SonChangWoo</div>
             
             <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="https://github.com/iui-whgi?tab=repositories"></i></a>
+                <a href="#"><i class="https://www.linkedin.com/in/%EC%B0%BD%EC%9A%B0-%EC%86%90-484b89345/"></i></a>
             </div>
 
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Search">
-                <span style="font-size: 12px; color: var(--text-secondary); margin-left: 8px;">Ctrl K</span>
+                <span class="ctrl-k">Ctrl K</span>
             </div>
 
             <ul class="nav-menu">
@@ -308,24 +318,6 @@
                         Projects
                         <i class="fas fa-chevron-down dropdown-icon"></i>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#experience">
-                        <i class="fas fa-user" style="margin-right: 8px; color: #ff6b6b;"></i>
-                        Experience
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#publications">Publications</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#blog">
-                        Blog
-                        <i class="fas fa-chevron-down dropdown-icon"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact">Contact Me</a>
                 </li>
             </ul>
         </nav>
@@ -342,8 +334,10 @@
             </header>
 
             <section class="profile-section">
-                <div class="profile-image">SN</div>
-                <h2 class="profile-name">Sai Navaneet</h2>
+                <div class="profile-image">
+                    <img src="profile-image.jpg" alt="Son Chang Woo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>                
+                <h2 class="profile-name">Son Chang Woo</h2>
                 <p class="profile-degree">Masters in Electronics</p>
             </section>
 
@@ -363,7 +357,7 @@
             </div>
 
             <footer class="footer">
-                By Navaneet
+                By SonChangWoo
             </footer>
         </main>
     </div>
